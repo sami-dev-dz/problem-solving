@@ -11,10 +11,12 @@
 // Output: 2
 
 /**
+/**
  * @param {number[]} nums
- * @return {number}
+ * @return {number|null}
  */
 var majorityElement = function (nums) {
+  // 1re passe : trouver le candidat (Boyer-Moore)
   let element = null;
   let count = 0;
 
@@ -22,9 +24,14 @@ var majorityElement = function (nums) {
     if (count === 0) {
       element = num;
     }
-
     count += num === element ? 1 : -1;
   }
 
-  return element;
+  // 2e passe : vérifier que le candidat est bien majoritaire
+  let occurrences = 0;
+  for (const num of nums) {
+    if (num === element) occurrences++;
+  }
+
+  return occurrences > nums.length / 2 ? element : null;
 };
