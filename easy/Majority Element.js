@@ -11,8 +11,6 @@
 // Output: 2
 
 /**
-/**
-/**
  * @param {number[]} nums
  * @return {number|null}
  */
